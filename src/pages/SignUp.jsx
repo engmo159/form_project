@@ -58,7 +58,7 @@ const SignUp = ({ theme }) => {
         .catch(err => {
           setErrorMsg(err.response.data.message)
         })
-        .finally(() => setLoading(false))
+      setLoading(false)
     }
   }
 
