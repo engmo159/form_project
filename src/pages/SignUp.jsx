@@ -32,7 +32,7 @@ const SignUp = ({ theme }) => {
   // submit function
   const submitHandler = e => {
     e.preventDefault()
-    setLoading(true)
+
     setErrorName(false)
     setErrorEmail(false)
     setErrorPassword(false)
@@ -47,6 +47,7 @@ const SignUp = ({ theme }) => {
     } else if (!isChecked) {
       setCheckBoxColor('red')
     } else {
+      setLoading(true)
       axios
         .post('https://form-project-backend-2.vercel.app/register', userInfo)
         .then(res => {
