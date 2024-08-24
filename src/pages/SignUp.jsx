@@ -48,10 +48,7 @@ const SignUp = ({ theme }) => {
       setCheckBoxColor('red')
     } else {
       axios
-        .post(
-          'https://form-project-backend-2.vercel.app/api/auth/register',
-          userInfo
-        )
+        .post('https://form-project-backend-2.vercel.app/register', userInfo)
         .then(res => {
           toast.success('You Successfully Registered')
           setTimeout(() => navigate('/'), 5000)
