@@ -26,7 +26,7 @@ const LogIn = ({ theme }) => {
   // submit function
   const submitHandler = e => {
     e.preventDefault()
-    setLoading(true)
+
     setErrorEmail(false)
     setErrorPassword(false)
     setErrorMsg('')
@@ -35,12 +35,12 @@ const LogIn = ({ theme }) => {
     } else if (password.length < 6) {
       setErrorPassword(true)
     } else {
+      setLoading(true)
       axios
-        .post('http://localhost:5000/api/auth/login', userInfo)
+        .post('https://form-project-backend-2.vercel.app/login', userInfo)
         .then(res => {
           toast.success('You Successfully Logged in')
           setTimeout(() => {
-            setLoading(false)
             navigate('/')
           }, 5000)
 
@@ -49,6 +49,7 @@ const LogIn = ({ theme }) => {
         .catch(err => {
           setErrorMsg(err.response.data.message)
         })
+        .finally(() => setLoading(false))
     }
   }
 

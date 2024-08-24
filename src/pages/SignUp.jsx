@@ -11,6 +11,7 @@ import {
   Typography,
   Spinner,
 } from '@material-tailwind/react'
+import HelperText from '../components/HelperText'
 
 const SignUp = ({ theme }) => {
   // states
@@ -53,7 +54,6 @@ const SignUp = ({ theme }) => {
         .then(res => {
           toast.success('You Successfully Registered')
           setTimeout(() => {
-            setLoading(false)
             navigate('/')
           }, 5000)
 
@@ -62,6 +62,7 @@ const SignUp = ({ theme }) => {
         .catch(err => {
           setErrorMsg(err.response.data.message)
         })
+        .finally(() => setLoading(false))
     }
   }
 
@@ -84,32 +85,42 @@ const SignUp = ({ theme }) => {
           <h3 className='text-center text-red-900'>{errorMsg}</h3>
         </div>
         <div className='mb-1 flex flex-col gap-6'>
-          <Input
-            label='Username'
-            value={name}
-            onChange={e => setName(e.target.value)}
-            error={errorName}
-            color={colorTheme}
-          />
-          <Input
-            label='Email'
-            value={email}
-            onChange={e => {
-              setEmail(e.target.value)
-              setErrorMsg('')
-            }}
-            error={errorEmail}
-            color={colorTheme}
-          />
-          <Input
-            label='Password'
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            error={errorPassword}
-            type='password'
-            color={colorTheme}
-          />
+          <div>
+            <Input
+              label='Username'
+              value={name}
+              onChange={e => setName(e.target.value)}
+              error={errorName}
+              color={colorTheme}
+            />
+            <HelperText text='user name must be 3 characters at least' />
+          </div>
+          <div>
+            <Input
+              label='Email'
+              value={email}
+              onChange={e => {
+                setEmail(e.target.value)
+                setErrorMsg('')
+              }}
+              error={errorEmail}
+              color={colorTheme}
+            />
+            <HelperText text='email must contain @ ' />
+          </div>
+          <div>
+            <Input
+              label='Password'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              error={errorPassword}
+              type='password'
+              color={colorTheme}
+            />
+            <HelperText text='password must be more than 5 characters' />
+          </div>
         </div>
+
         <Checkbox
           checked={isChecked}
           onChange={e => setIsChecked(e.target.checked)}
