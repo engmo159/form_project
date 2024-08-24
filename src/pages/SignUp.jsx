@@ -52,14 +52,16 @@ const SignUp = ({ theme }) => {
         .post('https://form-project-backend-2.vercel.app/register', userInfo)
         .then(res => {
           toast.success('You Successfully Registered')
-          setTimeout(() => navigate('/'), 5000)
+          setTimeout(() => {
+            setLoading(false)
+            navigate('/')
+          }, 5000)
 
           console.log(res)
         })
         .catch(err => {
           setErrorMsg(err.response.data.message)
         })
-        .finally(() => setLoading(false))
     }
   }
 

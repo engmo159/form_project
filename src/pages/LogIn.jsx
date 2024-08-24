@@ -39,7 +39,10 @@ const LogIn = ({ theme }) => {
         .post('http://localhost:5000/api/auth/login', userInfo)
         .then(res => {
           toast.success('You Successfully Logged in')
-          setTimeout(() => navigate('/'), 5000)
+          setTimeout(() => {
+            setLoading(false)
+            navigate('/')
+          }, 5000)
 
           console.log(res)
         })
@@ -47,7 +50,6 @@ const LogIn = ({ theme }) => {
           setErrorMsg(err.response.data.message)
         })
     }
-    setLoading(false)
   }
 
   return (
