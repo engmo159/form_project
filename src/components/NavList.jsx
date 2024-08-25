@@ -11,7 +11,12 @@ const NavList = ({ theme, setTheme }) => {
         color='blue-gray'
         className='p-1  text-xl'
       >
-        <Link to={'/'} className='flex items-center'>
+        <Link
+          to={'/'}
+          className={`flex items-center hover:scale-105 ${
+            location.pathname == '/' && 'text-teal-800 font-bold'
+          }`}
+        >
           Home
         </Link>
       </Typography>
@@ -21,7 +26,12 @@ const NavList = ({ theme, setTheme }) => {
         color='blue-gray'
         className='p-1  text-xl'
       >
-        <Link to={'/products'} className='flex items-center'>
+        <Link
+          to={'/products'}
+          className={`flex items-center hover:scale-105 ${
+            location.pathname == '/products' && 'text-teal-800 font-bold'
+          }`}
+        >
           Products
         </Link>
       </Typography>
@@ -31,7 +41,12 @@ const NavList = ({ theme, setTheme }) => {
         color='blue-gray'
         className='p-1  text-xl'
       >
-        <Link to={'/contact'} className='flex items-center'>
+        <Link
+          to={'/contact'}
+          className={`flex items-center hover:scale-105 ${
+            location.pathname == '/contact' && 'text-teal-800 font-bold'
+          }`}
+        >
           Contact
         </Link>
       </Typography>
@@ -44,7 +59,7 @@ const NavList = ({ theme, setTheme }) => {
         >
           <Link
             to={'/login'}
-            className='flex items-center bg-teal-700 px-4 py-1 rounded text-white hover:bg-teal-900 transition-all'
+            className={`flex items-center bg-teal-700 px-4 py-1 rounded text-white hover:bg-teal-900 transition-all `}
           >
             Log In
           </Link>
