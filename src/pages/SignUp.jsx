@@ -50,7 +50,7 @@ const SignUp = ({ theme }) => {
     } else {
       setLoading(true)
       axios
-        .post('https://form-project-backend-2.vercel.app/register', userInfo)
+        .post('https://form-project-backend.vercel.app/user/register', userInfo)
         .then(res => {
           toast.success('You Successfully Registered')
           setTimeout(() => {
@@ -60,7 +60,7 @@ const SignUp = ({ theme }) => {
           console.log(res)
         })
         .catch(err => {
-          setErrorMsg(err.response.data.message)
+          setErrorMsg(err.code)
         })
         .finally(() => setLoading(false))
     }
