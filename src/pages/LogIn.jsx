@@ -37,7 +37,7 @@ const LogIn = ({ theme }) => {
     } else {
       setLoading(true)
       axios
-        .post('https://form-project-backend-2.vercel.app/login', userInfo)
+        .post('https://form-project-backend.vercel.app/user/login', userInfo)
         .then(res => {
           toast.success('You Successfully Logged in')
           setTimeout(() => {
