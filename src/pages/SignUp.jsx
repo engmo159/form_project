@@ -12,6 +12,7 @@ import {
   Spinner,
 } from '@material-tailwind/react'
 import HelperText from '../components/HelperText'
+import { useAuth } from '../context/Auth/AuthContext'
 
 const SignUp = ({ theme }) => {
   // states
@@ -30,6 +31,7 @@ const SignUp = ({ theme }) => {
   const userInfo = { name, email, password }
   const navigate = useNavigate()
   const colorTheme = `${theme == 'dark' ? 'white' : 'blue-gray'}`
+  const { login } = useAuth()
   // submit function
   const submitHandler = e => {
     e.preventDefault()
@@ -58,6 +60,12 @@ const SignUp = ({ theme }) => {
           }, 5000)
 
           console.log(res)
+          const token = res.data
+          if (!res) {
+            setErrorMsg('incorrect token')
+            return
+          }
+          login(email, token)
         })
         .catch(err => {
           setErrorMsg(err.code)

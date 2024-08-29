@@ -1,8 +1,11 @@
 import DarkMode from './DarkMode'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Typography } from '@material-tailwind/react'
+import { useAuth } from '../context/Auth/AuthContext'
+import ProfileMenu from './ProfileMenu'
+
 const NavList = ({ theme, setTheme }) => {
-  const location = useLocation()
+  const { isAuthenticated } = useAuth()
   return (
     <ul className='mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 '>
       <Typography
@@ -50,7 +53,9 @@ const NavList = ({ theme, setTheme }) => {
           Contact
         </Link>
       </Typography>
-      {location.pathname !== '/login' && location.pathname !== '/signup' && (
+      {isAuthenticated ? (
+        <ProfileMenu />
+      ) : (
         <Typography
           as='li'
           variant='small'

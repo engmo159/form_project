@@ -10,6 +10,8 @@ import {
   Typography,
   Spinner,
 } from '@material-tailwind/react'
+import { useAuth } from '../context/Auth/AuthContext'
+
 const LogIn = ({ theme }) => {
   // states
   const [email, setEmail] = useState('')
@@ -23,6 +25,7 @@ const LogIn = ({ theme }) => {
   const userInfo = { email, password }
   const navigate = useNavigate()
   const colorTheme = `${theme == 'dark' ? 'white' : 'blue-gray'}`
+  const { login } = useAuth()
   // submit function
   const submitHandler = e => {
     e.preventDefault()
@@ -45,6 +48,12 @@ const LogIn = ({ theme }) => {
           }, 5000)
 
           console.log(res)
+          const token = res.data
+          if (!res) {
+            setErrorMsg('incorrect token')
+            return
+          }
+          login(email, token)
         })
         .catch(err => {
           setErrorMsg(err.response.data.message)
