@@ -13,9 +13,6 @@ import {
 import { useAuth } from '../context/Auth/AuthContext'
 
 const LogIn = ({ theme }) => {
-  const apiUrl = `${import.meta.env.VITE_BACKEND_URL}/user/login`
-  console.log('Constructed API URL:', apiUrl)
-
   // states
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
