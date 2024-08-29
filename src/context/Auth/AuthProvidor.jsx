@@ -1,29 +1,25 @@
 import { useState } from 'react'
 import { AuthContext } from './AuthContext'
 const AuthProvider = ({ children }) => {
-  const [userName, setUserName] = useState(
-    localStorage.getItem('userName') ? localStorage.getItem('userName') : ''
-  )
+  const [userData, setUserData] = useState({ name: '', email: '' })
   const [token, setToken] = useState(
     localStorage.getItem('token') ? localStorage.getItem('token') : ''
   )
 
-  const login = (userName, token) => {
-    setUserName(userName)
+  const login = token => {
     setToken(token)
-    localStorage.setItem('userName', userName)
     localStorage.setItem('token', token)
   }
   const logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userName')
-    setUserName('')
     setToken('')
+    setUserData({ name: '', email: '' })
   }
   const isAuthenticated = !!token
   return (
     <AuthContext.Provider
-      value={{ userName, token, login, isAuthenticated, logout }}
+      value={{ token, login, isAuthenticated, logout, userData, setUserData }}
     >
       {children}
     </AuthContext.Provider>

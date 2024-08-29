@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -25,11 +25,10 @@ const LogIn = ({ theme }) => {
   const userInfo = { email, password }
   const navigate = useNavigate()
   const colorTheme = `${theme == 'dark' ? 'white' : 'blue-gray'}`
-  const { login } = useAuth()
+  const { login, token, setUserData } = useAuth()
   // submit function
   const submitHandler = e => {
     e.preventDefault()
-
     setErrorEmail(false)
     setErrorPassword(false)
     setErrorMsg('')
@@ -40,7 +39,7 @@ const LogIn = ({ theme }) => {
     } else {
       setLoading(true)
       axios
-        .post('https://form-project-backend.vercel.app/user/login', userInfo)
+        .post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, userInfo)
         .then(res => {
           toast.success('You Successfully Logged in')
           setTimeout(() => {
@@ -48,12 +47,12 @@ const LogIn = ({ theme }) => {
           }, 5000)
 
           console.log(res)
-          const token = res.data
+          const dataToken = res.data
           if (!res) {
             setErrorMsg('incorrect token')
             return
           }
-          login(email, token)
+          login(dataToken)
         })
         .catch(err => {
           setErrorMsg(err.response.data.message)
@@ -61,6 +60,25 @@ const LogIn = ({ theme }) => {
         .finally(() => setLoading(false))
     }
   }
+
+  const getUserInfo = () => {
+    if (token) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/user/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(res => {
+          setUserData({ name: res.data.name, email: res.data.email })
+        })
+        .catch(error => console.error('Error fetching user data:', error))
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo()
+  }, [token])
 
   return (
     <Card
