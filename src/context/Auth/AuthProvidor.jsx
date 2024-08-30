@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AuthContext } from './AuthContext'
 const AuthProvider = ({ children }) => {
-  const [userData, setUserData] = useState({ name: '', email: '' })
+  const [userData, setUserData] = useState({ name: '', email: '', role: '' })
   const [token, setToken] = useState(
     localStorage.getItem('token') ? localStorage.getItem('token') : ''
   )
@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('token')
     localStorage.removeItem('userName')
     setToken('')
-    setUserData({ name: '', email: '' })
+    setUserData({ name: '', email: '', role: '' })
   }
   const isAuthenticated = !!token
   return (
