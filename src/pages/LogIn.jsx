@@ -21,6 +21,7 @@ const LogIn = ({ theme }) => {
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   //   other variables  && hooks
+  // eslint-disable-next-line no-useless-escape
   const regexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   const userInfo = { email, password }
   const navigate = useNavigate()
