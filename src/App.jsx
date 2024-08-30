@@ -24,9 +24,9 @@ const App = () => {
     }
   }, [theme])
   // user information fetching
-  const [getData, setGetData] = useState(false)
+  const [loading, setLoading] = useState(false)
   const getUserInfo = () => {
-    setGetData(false)
+    setLoading(true)
     if (token) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/user/me`, {
@@ -40,9 +40,9 @@ const App = () => {
             email: res.data.email,
             role: res.data.role,
           })
-          setGetData(true)
         })
         .catch(error => console.error('Error fetching user data:', error))
+        .finally(() => setLoading(false))
     }
   }
 
@@ -66,12 +66,12 @@ const App = () => {
           element={
             userData.role == 'admin' ? (
               <AdminLayout />
-            ) : getData ? (
-              <LogIn />
-            ) : (
+            ) : loading ? (
               <div className='flex justify-center items-center h-screen'>
                 <Spinner color='teal' className='h-12 w-12' />
               </div>
+            ) : (
+              <LogIn />
             )
           }
         />
