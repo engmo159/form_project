@@ -62,6 +62,10 @@ const App = () => {
         />
         <Route
           path='/admin/*'
+          element={<UserLayout theme={theme} setTheme={setTheme} />}
+        />
+        <Route
+          path='/admin/*'
           element={
             userData.role == 'admin' ? (
               <AdminLayout />
