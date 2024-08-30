@@ -55,7 +55,7 @@ const LogIn = ({ theme }) => {
           login(dataToken)
         })
         .catch(err => {
-          setErrorMsg(err.response.data.message)
+          setErrorMsg(err.response.data)
         })
         .finally(() => setLoading(false))
     }
