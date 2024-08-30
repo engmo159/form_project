@@ -20,7 +20,7 @@ const LogIn = ({ theme }) => {
   const [errorPassword, setErrorPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
-  //   other variables && hooks
+  //   other variables  && hooks
   const regexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   const userInfo = { email, password }
   const navigate = useNavigate()
