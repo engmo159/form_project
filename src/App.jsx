@@ -26,8 +26,8 @@ const App = () => {
   // user information fetching
   const [loading, setLoading] = useState(false)
   const getUserInfo = () => {
-    setLoading(true)
     if (token) {
+      setLoading(true)
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/user/me`, {
           headers: {
