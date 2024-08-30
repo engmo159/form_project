@@ -60,15 +60,8 @@ const App = () => {
           path='/*'
           element={<UserLayout theme={theme} setTheme={setTheme} />}
         />
+
         <Route
-          path='/admin/*'
-          element={<UserLayout theme={theme} setTheme={setTheme} />}
-        />
-        <Route
-          path='/mohsen'
-          element={<UserLayout theme={theme} setTheme={setTheme} />}
-        />
-        {/* <Route
           path='/admin/*'
           element={
             userData.role == 'admin' ? (
@@ -81,7 +74,7 @@ const App = () => {
               </div>
             )
           }
-        /> */}
+        />
       </Routes>
     </div>
   )
