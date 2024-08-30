@@ -69,7 +69,7 @@ const App = () => {
               <LogIn />
             ) : (
               <div className='flex justify-center items-center h-screen'>
-                <Spinner color='teal' className='h-40 w-40' />
+                <Spinner color='teal' className='h-12 w-12' />
               </div>
             )
           }
