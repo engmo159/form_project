@@ -16,7 +16,7 @@ const myStyles = {
   inactiveFillColor: '#fbf1a9',
 }
 const ProductCard = ({
-  title,
+  name,
   description,
   price,
   discountPercentage,
@@ -32,7 +32,7 @@ const ProductCard = ({
       </CardHeader>
       <CardBody className='p-2 flex flex-col gap-2 items-center'>
         <Typography variant='h5' color='black' className='text-md'>
-          {title}
+          {name}
         </Typography>
         <Typography
           variant='paragraph'

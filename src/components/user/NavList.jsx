@@ -1,7 +1,7 @@
 import DarkMode from './DarkMode'
 import { Link } from 'react-router-dom'
 import { Typography } from '@material-tailwind/react'
-import { useAuth } from '../context/Auth/AuthContext'
+import { useAuth } from '../../context/Auth/AuthContext'
 import ProfileMenu from './ProfileMenu'
 
 const NavList = ({ theme, setTheme }) => {

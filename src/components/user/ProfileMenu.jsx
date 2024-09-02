@@ -10,7 +10,7 @@ import {
   Avatar,
 } from '@material-tailwind/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { useAuth } from '../context/Auth/AuthContext'
+import { useAuth } from '../../context/Auth/AuthContext'
 
 const ProfileMenu = () => {
   const { userData, logout } = useAuth()

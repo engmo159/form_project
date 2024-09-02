@@ -10,7 +10,7 @@ import {
   Typography,
   Spinner,
 } from '@material-tailwind/react'
-import { useAuth } from '../context/Auth/AuthContext'
+import { useAuth } from '../../context/Auth/AuthContext'
 
 const LogIn = ({ theme }) => {
   // states

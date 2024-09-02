@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Home from './pages/Home'
-import Products from './pages/Products'
-import Contact from './pages/Contact'
-import LogIn from './pages/LogIn'
-import SignUp from './pages/SignUp'
-import NotFound from './pages/NotFound'
+import Header from './components/user/Header'
+import Home from './pages/user/Home'
+import Products from './pages/user/Products'
+import Contact from './pages/user/Contact'
+import LogIn from './pages/user/LogIn'
+import SignUp from './pages/user/SignUp'
+import NotFound from './pages/user/NotFound'
 
 const UserLayout = ({ theme, setTheme }) => {
   return (

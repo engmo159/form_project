@@ -12,8 +12,8 @@ import {
   Typography,
   Spinner,
 } from '@material-tailwind/react'
-import HelperText from '../components/HelperText'
-import { useAuth } from '../context/Auth/AuthContext'
+import HelperText from '../../components/user/HelperText'
+import { useAuth } from '../../context/Auth/AuthContext'
 
 const SignUp = ({ theme }) => {
   // states

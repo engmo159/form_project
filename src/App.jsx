@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react'
 import UserLayout from './UserLayout'
 import AdminLayout from './AdminLayout'
 import { useAuth } from './context/Auth/AuthContext'
-import LogIn from './pages/LogIn'
+import LogIn from './pages/user/LogIn'
 import axios from 'axios'
-import { Spinner } from '@material-tailwind/react'
 
 const App = () => {
   const { userData, token, setUserData } = useAuth()
@@ -24,10 +23,8 @@ const App = () => {
     }
   }, [theme])
   // user information fetching
-  const [loading, setLoading] = useState(false)
   const getUserInfo = () => {
     if (token) {
-      setLoading(true)
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/user/me`, {
           headers: {
@@ -42,7 +39,6 @@ const App = () => {
           })
         })
         .catch(error => console.error('Error fetching user data:', error))
-        .finally(() => setLoading(false))
     }
   }
 
@@ -63,17 +59,7 @@ const App = () => {
 
         <Route
           path='/admin/*'
-          element={
-            userData.role == 'admin' ? (
-              <AdminLayout />
-            ) : loading ? (
-              <div className='flex justify-center items-center h-screen'>
-                <Spinner color='teal' className='h-12 w-12' />
-              </div>
-            ) : (
-              <LogIn />
-            )
-          }
+          element={userData.role == 'admin' ? <AdminLayout /> : <LogIn />}
         />
       </Routes>
     </div>
