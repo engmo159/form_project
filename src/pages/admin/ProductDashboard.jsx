@@ -37,7 +37,7 @@ const ProductDashboard = () => {
             .delete(`${import.meta.env.VITE_BACKEND_URL}/product/${id}`)
             .then(response => {
               console.log(response.data)
-              setProducts(products.filter(product => product._id !== id))
+              getAllProducts()
             })
             .finally(() => {
               swalWithBootstrapButtons.fire({

@@ -1,3 +1,4 @@
+import { Button } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom'
 const NotFound = () => {
   const navigateHook = useNavigate()
@@ -5,7 +6,7 @@ const NotFound = () => {
   return (
     <div className='text-center'>
       NotFound
-      <button onClick={() => navigateHook('/')}>Back To Home</button>
+      <Button onClick={() => navigateHook('/')}>Back To Home</Button>
     </div>
   )
 }
