@@ -32,67 +32,65 @@ const AddProduct = () => {
       .catch(err => console.error(err))
   }
   return (
-    <div>
-      <Card
-        color='gray'
-        shadow={true}
-        className='flex items-center mt-4 text-white'
-      >
-        <Typography variant='h4'>Add New Product</Typography>
+    <Card
+      color='gray'
+      shadow={true}
+      className='flex items-center mt-4 text-white'
+    >
+      <Typography variant='h4'>Add New Product</Typography>
 
-        <form className='mt-8 mb-2 w-full px-8' onSubmit={submitHandler}>
-          <div className='flex flex-col items-center justify-evenly gap-8'>
-            <div className='w-full gap-8 flex items-center'>
-              <Input
-                label='ProductName'
-                value={name}
-                onChange={e => setName(e.target.value)}
-                color='teal'
-              />
-              <Input
-                label='ProductDescription'
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-                color='teal'
-              />
-            </div>
-            <div className='w-full gap-8 flex items-center'>
-              <Input
-                label='ProductPrice'
-                value={price}
-                onChange={e => setPrice(e.target.value)}
-                color='teal'
-                type='number'
-              />
-              <Input
-                label='Stock'
-                value={stock}
-                onChange={e => setStock(e.target.value)}
-                color='teal'
-                type='number'
-              />
-            </div>
-            <div className='w-full gap-8 flex items-center'>
-              <Input
-                label='ProductThumbnail'
-                value={thumbnail}
-                onChange={e => setThumbnail(e.target.value)}
-                color='teal'
-              />
-            </div>
+      <form className='mt-8 mb-2 w-full px-8' onSubmit={submitHandler}>
+        <div className='flex flex-col items-center justify-evenly gap-8'>
+          <div className='w-full gap-8 flex items-center'>
+            <Input
+              label='ProductName'
+              value={name}
+              onChange={e => setName(e.target.value)}
+              color='teal'
+            />
+            <Input
+              label='ProductDescription'
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              color='teal'
+            />
           </div>
-          <Button
-            className='mt-4 text-lg font-normal'
-            fullWidth
-            type='submit'
-            color={'teal'}
-            disabled={name ? false : true}
-          >
-            Add Product
-          </Button>
-        </form>
-      </Card>
-    </div>
+          <div className='w-full gap-8 flex items-center'>
+            <Input
+              label='ProductPrice'
+              value={price}
+              onChange={e => setPrice(e.target.value)}
+              color='teal'
+              type='number'
+            />
+            <Input
+              label='Stock'
+              value={stock}
+              onChange={e => setStock(e.target.value)}
+              color='teal'
+              type='number'
+            />
+          </div>
+          <div className='w-full gap-8 flex items-center'>
+            <Input
+              label='ProductThumbnail'
+              value={thumbnail}
+              onChange={e => setThumbnail(e.target.value)}
+              color='teal'
+            />
+          </div>
+        </div>
+        <Button
+          className='mt-4 text-lg font-normal'
+          fullWidth
+          type='submit'
+          color={'teal'}
+          disabled={name ? false : true}
+        >
+          Add Product
+        </Button>
+      </form>
+    </Card>
   )
 }
 

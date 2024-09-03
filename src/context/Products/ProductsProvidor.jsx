@@ -17,7 +17,6 @@ const ProductsProvider = ({ children }) => {
   const getProductById = id => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/product/${id}`).then(res => {
       setProduct(res.data)
-      console.log(product)
     })
   }
   return (
