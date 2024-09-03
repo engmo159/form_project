@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import 'react-toastify/dist/ReactToastify.css'
 import { Card, Input, Button, Typography } from '@material-tailwind/react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useProducts } from '../../context/Products/ProductsContext'
