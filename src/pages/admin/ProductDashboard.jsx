@@ -7,7 +7,7 @@ import axios from 'axios'
 const TABLE_HEAD = ['Product', 'Price', 'Operations']
 
 const ProductDashboard = () => {
-  const { products, setProducts, getAllProducts } = useProducts()
+  const { products, getAllProducts } = useProducts()
   getAllProducts()
   const deleteProduct = (thumbnail, id) => {
     const swalWithBootstrapButtons = Swal.mixin({
