@@ -3,12 +3,16 @@ import { useProducts } from '../../context/Products/ProductsContext'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import { useEffect } from 'react'
 
 const TABLE_HEAD = ['Product', 'Price', 'Operations']
 
 const ProductDashboard = () => {
   const { products, getAllProducts } = useProducts()
-  getAllProducts()
+  useEffect(() => {
+    getAllProducts()
+  }, [])
+
   const deleteProduct = (thumbnail, id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
