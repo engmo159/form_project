@@ -5,7 +5,8 @@ import AdminSideBar from './components/admin/AdminSideBar'
 import ShowProduct from './pages/admin/ShowProduct'
 import EditProduct from './pages/admin/EditProduct'
 import AddProduct from './pages/admin/AddProduct'
-import ProductDashboard from './pages/admin/ProductDashBoard'
+import ProductDashboard from './components/admin/ProductDashboard'
+
 const AdminLayout = () => {
   return (
     <div>
