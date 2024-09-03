@@ -1,16 +1,9 @@
-import { useEffect, useState } from 'react'
 import ProductCard from '../../components/user/ProductCard'
+import { useProducts } from '../../context/Products/ProductsContext'
 
 const Products = () => {
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    // fetch('https://dummyjson.com/products')
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/product`)
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data)
-      })
-  }, [])
+  const { products, getAllProducts } = useProducts()
+  getAllProducts()
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mx-2 mt-2'>
       {products.map(

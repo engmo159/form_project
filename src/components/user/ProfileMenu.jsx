@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Typography,
   Button,
@@ -49,9 +49,25 @@ const ProfileMenu = () => {
         </Button>
       </MenuHandler>
       <MenuList className='p-1'>
+        {userData.role == 'admin' && (
+          <MenuItem
+            onClick={closeMenu}
+            className={`flexitems-center gap-2 rounded `}
+          >
+            <Typography
+              as='span'
+              variant='small'
+              className='font-normal'
+              color={'teal'}
+            >
+              <Link to={'/admin/products'}> Admin Dashboard</Link>
+            </Typography>
+          </MenuItem>
+        )}
+
         <MenuItem
           onClick={closeMenu}
-          className={`flex items-center gap-2 rounded `}
+          className={`flexitems-center gap-2 rounded `}
         >
           <Typography
             as='span'

@@ -1,8 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+
 import {
   Card,
   Input,
@@ -42,10 +41,7 @@ const LogIn = ({ theme }) => {
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, userInfo)
         .then(res => {
-          toast.success('You Successfully Logged in')
-          setTimeout(() => {
-            navigate('/')
-          }, 5000)
+          navigate('/')
 
           console.log(res)
           const dataToken = res.data
@@ -68,7 +64,6 @@ const LogIn = ({ theme }) => {
       shadow={false}
       className='flex items-center mt-4 text-black dark:text-white'
     >
-      <ToastContainer />
       <Typography variant='h4'>Sign In</Typography>
       <Typography color={'gray'} className='mt-1 font-normal'>
         Nice to meet you! Enter your details to log in.

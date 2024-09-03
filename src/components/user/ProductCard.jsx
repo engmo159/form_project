@@ -39,7 +39,7 @@ const ProductCard = ({
           color='gray'
           className='text-xs text-center '
         >
-          {description.slice(0, 70)}
+          {description?.slice(0, 70)}
         </Typography>
         <div className='flex justify-evenly items-center w-full'>
           <Typography
